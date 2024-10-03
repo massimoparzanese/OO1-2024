@@ -14,10 +14,10 @@ public class ReporteDeConstruccion {
 		this.piezas.add(pieza);
 	}
 	public double volumenDeMaterial(String material) {
-		return this.piezas.stream().filter(p -> p.getMaterial().equals(material)).mapToDouble(p -> p.getVolumen()).sum();
+		return this.piezas.stream().filter(p -> p.esDeMaterial(material)).mapToDouble(p -> p.getVolumen()).sum();
 	}
 	
 	public double superficieDeColor(String color) {
-		return this.piezas.stream().filter(p -> p.getColor().equals(color)).mapToDouble(p -> p.getSuperficie()).sum();
+		return this.piezas.stream().filter(p -> p.esColor(color)).mapToDouble(p -> p.getSuperficie()).sum();
 	}
 }

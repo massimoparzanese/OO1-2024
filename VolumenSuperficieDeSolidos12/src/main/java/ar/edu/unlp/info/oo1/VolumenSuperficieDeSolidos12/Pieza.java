@@ -19,8 +19,16 @@ public abstract class Pieza {
 		return material;
 	}
 	
+	public boolean esDeMaterial(String material) {
+		return this.material.equals(material);
+	}
+
+	public boolean esColor(String color) {
+		return this.color.equals(color);
+	}
 	public abstract double getVolumen();
 	public abstract double getSuperficie();
+	
 
 	
 	
