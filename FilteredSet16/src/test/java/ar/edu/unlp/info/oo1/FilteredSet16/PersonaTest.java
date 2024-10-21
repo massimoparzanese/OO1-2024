@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.IntervaloDeTiempo14;
+package ar.edu.unlp.info.oo1.FilteredSet16;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

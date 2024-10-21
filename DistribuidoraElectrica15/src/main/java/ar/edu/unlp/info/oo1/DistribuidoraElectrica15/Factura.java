@@ -7,10 +7,10 @@ public class Factura {
 	private Usuario usuario;
 	private CuadroTarifario cuadroTarifario;
 	
-	public Factura(Usuario usuario, double precioKwh) {
+	public Factura(Usuario usuario, CuadroTarifario cuadroTarifario) {
 		this.fechaOmision = LocalDate.now();
 		this.usuario = usuario;
-		this.cuadroTarifario = new CuadroTarifario(precioKwh);
+		this.cuadroTarifario = cuadroTarifario;
 
 	}
 	
@@ -18,15 +18,22 @@ public class Factura {
 		return fechaOmision;
 	}
 	
-	public double getBonificacion() {
-		if(this.usuario.obtenerConsumo().obtenerFactorPotencia() >= 0.8) 
-			return this.getMontoTotal() - ((this.getMontoTotal() * this.usuario.obtenerConsumo().obtenerFactorPotencia()) / 100);
-		else return 0;
+	public boolean getBonificacion() {
+		return (this.usuario.obtenerConsumo().obtenerFactorPotencia() >= 0.8) ;
+			
 	}
 	
+	private double obtenerPrecioActiva(double act, double precio) {
+		return act * precio;
+	}
 	public double getMontoTotal() {
-		return (this.usuario.obtenerConsumo().getActiva() 
-				* this.cuadroTarifario.getPrecioKwh()) - this.getBonificacion();
+		double act = this.usuario.obtenerConsumo().getActiva();
+		double precio = this.cuadroTarifario.getPrecioKwh();
+		if(this.getBonificacion())
+			return (this.obtenerPrecioActiva(act, precio) - (this.obtenerPrecioActiva(act, precio) * 0.10));
+		else
+		return (this.obtenerPrecioActiva(act, precio));
+				  
 	}
 	
 }
