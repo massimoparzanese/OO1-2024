@@ -37,5 +37,16 @@ public class DateLapse2 implements DateLapseOverall {
         return ((d.isAfter(this.from) || d.isEqual(this.from))
                 && (d.isBefore(this.getDateTo()) || d.isEqual(this.getDateTo())));
     }
+    
+    /**
+    Retorna true si el período de tiempo del receptor se superpone con el recibido por parámetro
+    **/
+    public boolean overlaps (DateLapse anotherDateLapse) {
+    	return ((anotherDateLapse.includesDate(from) 
+    			|| anotherDateLapse.includesDate(getDateTo()) 
+    			|| (includesDate(anotherDateLapse.getFrom()) 
+    					|| includesDate(anotherDateLapse.getTo()))));
+    }
+
 
 }
