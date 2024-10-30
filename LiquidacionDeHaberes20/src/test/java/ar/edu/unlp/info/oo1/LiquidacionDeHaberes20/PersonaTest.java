@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.AlquilerDePropiedades17;
+package ar.edu.unlp.info.oo1.LiquidacionDeHaberes20;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

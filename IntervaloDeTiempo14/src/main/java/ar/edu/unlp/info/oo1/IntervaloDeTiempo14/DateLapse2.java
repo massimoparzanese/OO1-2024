@@ -41,11 +41,11 @@ public class DateLapse2 implements DateLapseOverall {
     /**
     Retorna true si el período de tiempo del receptor se superpone con el recibido por parámetro
     **/
-    public boolean overlaps (DateLapse anotherDateLapse) {
+    public boolean overlaps (DateLapseOverall anotherDateLapse) {
     	return ((anotherDateLapse.includesDate(from) 
     			|| anotherDateLapse.includesDate(getDateTo()) 
     			|| (includesDate(anotherDateLapse.getFrom()) 
-    					|| includesDate(anotherDateLapse.getTo()))));
+    					|| includesDate(anotherDateLapse.getDateTo()))));
     }
 
 
