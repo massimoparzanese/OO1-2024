@@ -47,6 +47,25 @@ public class Empleado {
 		return tieneHijos;
 	}
 	
+	public double montoACobrar() {
+		int antiguedad = calcularAntiguedad();
+		double porcentaje = 1;
+		if(antiguedad == 5 && antiguedad < 10) {
+			porcentaje = 1.30;
+		}
+		else if(antiguedad >= 10 && antiguedad < 15) {
+			porcentaje = 1.50;
+		}
+		else if(antiguedad >= 15 && antiguedad < 20) {
+			porcentaje = 1.75;
+		}
+		else if(antiguedad >= 20) {
+			porcentaje = 2;
+		}
+		
+		return obtenerContratoActual().sueldoBasico() * porcentaje;
+	}
+	
 	private Contrato obtenerContratoActual() {
 		return this.misContratos
 				.stream().filter(contr -> contr.noVencido()).findFirst().orElse(null);
@@ -61,6 +80,6 @@ public class Empleado {
 	}
 	
 	public int calcularAntiguedad() {
-		return 0;
+		return this.misContratos.stream().mapToInt(contrato -> contrato.calcularDuracion()).sum();
 	}
 }
