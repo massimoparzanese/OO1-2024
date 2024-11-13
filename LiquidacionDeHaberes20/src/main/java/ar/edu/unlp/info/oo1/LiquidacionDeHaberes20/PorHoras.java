@@ -27,7 +27,7 @@ public class PorHoras extends Contrato {
 		}
 
 		
-		public double sueldoBasico() {
+		public double sueldoBasico(boolean hijos, boolean conyuge) {
 			return this.valor * this.horas;
 		}
 

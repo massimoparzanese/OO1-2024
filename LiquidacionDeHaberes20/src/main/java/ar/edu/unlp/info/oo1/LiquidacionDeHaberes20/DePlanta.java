@@ -8,16 +8,14 @@ public class DePlanta extends Contrato{
 	private double sueldoMes;
 	private double montoConyuge;
 	private double montoHijos;
-	private boolean hijos;
-	private boolean conyuge;
+
 
 	public DePlanta(LocalDate fechaInicio, double sueldoM, double montoC, double montoH,boolean hijos, boolean conyuge) {
 		super(fechaInicio);
 		this.sueldoMes = sueldoM;
 		this.montoConyuge = montoC;
 		this.montoHijos = montoH;
-		this.hijos = hijos;
-		this.conyuge = conyuge;
+
 	}
 
 	public double getSueldoMes() {
@@ -33,12 +31,12 @@ public class DePlanta extends Contrato{
 	}
 
 	@Override
-	public double sueldoBasico() {
+	public double sueldoBasico(boolean hijos, boolean conyuge) {
 		double total = this.sueldoMes;
-		if (this.hijos) 
+		if (hijos) 
 			total += this.montoHijos;
 		
-		if(this.conyuge) 
+		if(conyuge) 
 			total+= this.montoConyuge;
 		return total;
 	}

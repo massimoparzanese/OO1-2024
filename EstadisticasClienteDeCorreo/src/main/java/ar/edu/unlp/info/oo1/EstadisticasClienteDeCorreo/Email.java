@@ -35,5 +35,19 @@ public class Email {
   public int tamaño() {
 	  return this.cuerpo.length() + this.titulo.length() + this.adjuntos.stream().mapToInt(a -> a.tamaño()).sum();
   }
+  /*
+  Este metodo retorna el valor el cual se le asigna al mail segun
+  su tamaño
+   */
+  public String clasificarPorTamanio(){
+      int tamaño =this.tamaño();
+      if(tamaño <= 300){
+          return "Pequeño";
+      }else if(tamaño > 300 && tamaño < 501){
+          return "Mediano";
+      }else{
+          return "Grande";
+      }
+  }
   
 }

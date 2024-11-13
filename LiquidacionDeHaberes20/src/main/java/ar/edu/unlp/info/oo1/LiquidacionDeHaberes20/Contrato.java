@@ -14,7 +14,7 @@ public abstract class Contrato {
 	public LocalDate getFechaInicio() {
 		return this.fechaInicio;
 	}
-	public abstract double sueldoBasico();
+	public abstract double sueldoBasico(boolean hijo, boolean conyuge);
 	
 	public abstract int calcularDuracion();
 	

@@ -22,7 +22,7 @@ public class Empleado {
 	}
 	// Crea un recibo de sueldo del empleado y lo devuelve
 	public ReciboDeSueldo generarReciboSueldo() {
-		ReciboDeSueldo recibo = new ReciboDeSueldo(this.nombre,this.apellido,this.cuit, this.calcularAntiguedad(),this.obtenerContratoActual().sueldoBasico());
+		ReciboDeSueldo recibo = new ReciboDeSueldo(this.nombre,this.apellido,this.cuit, this.calcularAntiguedad(),sueldoBasico());
 		return recibo;
 	
 }
@@ -47,6 +47,9 @@ public class Empleado {
 		return tieneHijos;
 	}
 	
+	private double sueldoBasico() {
+		return obtenerContratoActual().sueldoBasico(this.tieneHijos,this.tieneConyuge);
+	}
 	public double montoACobrar() {
 		int antiguedad = calcularAntiguedad();
 		double porcentaje = 1;
@@ -63,7 +66,7 @@ public class Empleado {
 			porcentaje = 2;
 		}
 		
-		return obtenerContratoActual().sueldoBasico() * porcentaje;
+		return  sueldoBasico() * porcentaje;
 	}
 	
 	private Contrato obtenerContratoActual() {

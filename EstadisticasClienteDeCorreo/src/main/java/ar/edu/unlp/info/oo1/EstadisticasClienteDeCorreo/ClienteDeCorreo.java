@@ -16,7 +16,7 @@ public class ClienteDeCorreo {
 	}
 	
 	public void recibir(Email email) {
-		this.carpetas.get(0).agregarEmail(email);
+		this.inbox.agregarEmail(email);
 	}
 	
 	public Email buscar(String texto) {
@@ -27,9 +27,15 @@ public class ClienteDeCorreo {
 				.map(c -> c.buscar(texto)).filter(Objects::nonNull)
 				.findFirst().orElse(null);
 	}
+	  public void addCarpeta(Carpeta c){
+	        this.carpetas.add(c);
+	    }
 	
 	public int espacioOcupado() {
 		return this.carpetas.stream().mapToInt(carpetas -> carpetas.tamaño()).sum() + this.inbox.tamaño();
 	}
-
+	
+	public int cuantosTengo() {
+		return this.inbox.cuantosTengo() + this.carpetas.stream().mapToInt(carpeta -> carpeta.cuantosTengo()).sum();
+	}
 }
